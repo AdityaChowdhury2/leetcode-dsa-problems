@@ -28,13 +28,21 @@ Constraints:
 The elements in nums are distinct.
 
  */
-const nums = [5, 0, 1, 2, 3, 4];
+const nums = [0, 2, 1, 5, 3, 4];
 var buildArray = function (nums) {
-	let ans = [];
-	for (let i = 0; i < nums.length; i++) {
-		ans[i] = nums[nums[i]];
+	//spaceComplexity O(1)
+	const len = nums.length;
+	for (let i = 0; i < len; i++) {
+		nums[i] = nums[i] + len * (nums[nums[i]] % len);
 	}
-	return ans;
+	return nums;
+
+	// timeComplexity and spaceComplexity O(n)
+	// let ans = [];
+	// for (let i = 0; i < nums.length; i++) {
+	// 	ans[i] = nums[nums[i]];
+	// }
+	// return ans;
 };
 
 console.log(buildArray(nums));
